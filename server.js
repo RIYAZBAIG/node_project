@@ -11,7 +11,13 @@ app.get('/Chicken', function (req, res) {
 
   app.get('/Idli', function (req, res) {
     res.send('Welcome to south India we love to serve Idli Vada....!')
-  })
+  });
+
+  app.get('/Dal', function (req, res) {
+    res.send('Sure sir ,I would love to serve  south indean Dal Chawal....!')
+  });
+
+
   
 
 app.listen(3000)
