@@ -1,26 +1,61 @@
-const express = require('express')
+const express = require('express');
+const { size } = require('lodash');
 const app = express();
+const db = require('./db');
+const person = require("./person");
+
+const bodyParser = require('body-parser');
+const Person = require('./person');
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.send('Welcome to my hotel .....! How i can help you?')
+  res.send('Welcome to my hotel .....! How i can help you?  We have list of menus...!')
 });
 
-app.get('/Chicken', function (req, res) {
-    res.send('Sure sir ,I would love to serve chicken....!')
-  });
+app.post('/person', async (req, res) => {
+  try {
+    const data = req.body;
+    const newPerson = new Person(data);
+    const response = await newPerson.save();
+    console.log('Data saved');
+    res.status(200).json(response);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
-  app.get('/Idli', function (req, res) {
-    res.send('Welcome to south India we love to serve Idli Vada....!')
-  });
 
-  app.get('/Dal', function (req, res) {
-    res.send('Sure sir ,I would love to serve  south indean Dal Chawal....!')
-  });
+
+// app.get('/Chicken', function (req, res) {
+//     res.send('Sure sir ,I would love to serve chicken....!')
+//   });
+
+//   app.get('/Idli', function (req, res) {
+//     var customized_idli ={
+//       name: "Rava Idli",
+//       size: '12 cm diameter',
+//       is_sambar: true,
+//       is_chutony: false,
+
+//     }
+//     res.send(customized_idli)
+//   });
+
+//   app.get('/Dal', function (req, res) {
+//     res.send('Sure sir ,I would love to serve  south indean Dal Chawal....!')
+//   });
+
+//   app.post('/items', function(res,req){
+//     res.send('data is saved')
+//   })
 
 
   
 
-app.listen(3000)
+app.listen(3000, ()=>{
+  console.log("server is running on port 3000....!");
+})
 
 
 
