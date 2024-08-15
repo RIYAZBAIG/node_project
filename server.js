@@ -1,22 +1,41 @@
+const express = require('express')
+const app = express();
 
-const notes = require("./notes.js")
-var _ = require('lodash');
+app.get('/', function (req, res) {
+  res.send('Welcome to my hotel .....! How i can help you?')
+});
 
-console.log('server file is available....!');
+app.get('/Chicken', function (req, res) {
+    res.send('Sure sir ,I would love to serve chicken....!')
+  });
 
-var age = notes.age;
-console.log(age);
+  app.get('/Idli', function (req, res) {
+    res.send('Welcome to south India we love to serve Idli Vada....!')
+  })
+  
 
-var data = ["person","person",1,2,1,2,'name','age','2'];
-var filter = _.uniq(data);
-console.log(filter);
-console.log(_.isString("samadbaig"));
+app.listen(3000)
 
 
-var arr = [1,2,3];
 
-_.reverse(arr);
-console.log(arr)
+// const notes = require("./notes.js")
+// var _ = require('lodash');
+
+// console.log('server file is available....!');
+
+// var age = notes.age;
+// console.log(age);
+
+// var data = ["person","person",1,2,1,2,'name','age','2'];
+// var filter = _.uniq(data);
+// console.log(filter);
+// console.log(_.isString("samadbaig"));
+
+
+// var arr = [1,2,3];
+
+// _.reverse(arr);
+// console.log(arr)
 
 // console.log("server file is running on 3000");
 
